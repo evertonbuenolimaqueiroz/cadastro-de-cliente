@@ -1,0 +1,201 @@
+unit eEndereco.View.Controller;
+
+interface
+
+uses eEndereco.Model.Controller;
+
+Type
+  TEndereco = Class(TInterfacedObject, iEndereco)
+  private
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function New: iEndereco;
+    procedure ConsultarCep(ACEP: String; out Logradouro: String;
+      out Bairro: String; out IBGE: String; out Cidade: String;
+      out Estado: String);
+  end;
+
+implementation
+
+{ TEndereco }
+
+procedure TEndereco.ConsultarCep(ACEP: String; out Logradouro, Bairro, IBGE,
+  Cidade, Estado: String);
+var
+  LAddress: ICep4DModelAddress;
+  msgError: String;
+  ACBrIBGE: TACBrIBGE;
+  ACBrCEP: TACBrCEP;
+  iBuscaCep: Integer;
+const
+  DmsgError: String =
+    'Não foi possível a consulta do endereço em servidores externos.' +
+    sLineBreak + 'Por favor, continue o cadastro do endereço manualmente!';
+
+  Procedure GetCep(sAddressType, vAddress, vDistrict, vIBGE, vCity,
+    vState: String);
+  begin
+    AddressType := sAddressType;
+    Address := vAddress;
+    District := vDistrict;
+    IBGE := vIBGE;
+    City := vCity;
+    State := vState;
+    { edtDDD.Text := LAddress.DDD.ToString;
+      edtLatitude.Text := LAddress.Latitude.ToString;
+      edtLongitude.Text := LAddress.Longitude.ToString; }
+  end;
+
+begin
+  ACBrCEP := TACBrCEP.Create(nil);
+  ACBrIBGE := TACBrIBGE.Create(nil);
+
+  try
+    ACBrIBGE.IgnorarCaixaEAcentos := True;
+
+{$REGION 'CEP4D'}
+    try
+      LAddress := GetCep4D.ZipCode(ACEP).Search;
+      msgError := EmptyStr;
+    except
+      // on e: exception do
+      // msgError := DmsgError;
+    end;
+
+    if not(LAddress.Address = EmptyStr) then
+    begin
+      GetCep(LAddress.AddressType, LAddress.Address, LAddress.District,
+        LAddress.IbgeCode.ToString, LAddress.City, LAddress.State);
+      exit;
+    end;
+{$ENDREGION}
+{$REGION 'WSCORREIOS'}
+    ACBrCEP.WebService := wsCorreios;
+
+    try
+      iBuscaCep := ACBrCEP.BuscarPorCEP(ACEP);
+      msgError := EmptyStr;
+    except
+      on e: exception do
+        msgError := DmsgError;
+    end;
+
+    if iBuscaCep > 0 then
+      if not(Trim(ACBrCEP.Enderecos[0].IBGE_Municipio) = EmptyStr) then
+      Begin
+        ACBrIBGE.IgnorarCaixaEAcentos := True;
+        ACBrIBGE.BuscarPorNome(ACBrCEP.Enderecos[0].Municipio,
+          ACBrCEP.Enderecos[0].UF);
+        ACBrCEP.Enderecos[0].IBGE_Municipio := ACBrIBGE.Cidades[0]
+          .CodMunicipio.ToString;
+
+        GetCep('', ACBrCEP.Enderecos[0].Logradouro, ACBrCEP.Enderecos[0].Bairro,
+          ACBrIBGE.Cidades[0].CodMunicipio.ToString,
+          ACBrCEP.Enderecos[0].Municipio, ACBrCEP.Enderecos[0].UF);
+        exit;
+      end;
+{$ENDREGION}
+{$REGION 'WSVIACEP'}
+    ACBrCEP.WebService := wsViaCep;
+
+    try
+      iBuscaCep := ACBrCEP.BuscarPorCEP(ACEP);
+      msgError := EmptyStr;
+    except
+      on e: exception do
+        msgError := DmsgError;
+    end;
+
+    if iBuscaCep > 0 then
+      if not(Trim(ACBrCEP.Enderecos[0].IBGE_Municipio) = EmptyStr) then
+      Begin
+        ACBrIBGE.IgnorarCaixaEAcentos := True;
+        ACBrIBGE.BuscarPorNome(ACBrCEP.Enderecos[0].Municipio,
+          ACBrCEP.Enderecos[0].UF);
+        ACBrCEP.Enderecos[0].IBGE_Municipio := ACBrIBGE.Cidades[0]
+          .CodMunicipio.ToString;
+
+        GetCep('', ACBrCEP.Enderecos[0].Logradouro, ACBrCEP.Enderecos[0].Bairro,
+          ACBrIBGE.Cidades[0].CodMunicipio.ToString,
+          ACBrCEP.Enderecos[0].Municipio, ACBrCEP.Enderecos[0].UF);
+        exit;
+      end;
+{$ENDREGION}
+{$REGION 'WSCORREIOSSIGEP'}
+    ACBrCEP.WebService := wsCorreiosSIGEP;
+
+    try
+      iBuscaCep := ACBrCEP.BuscarPorCEP(ACEP);
+      msgError := EmptyStr;
+    except
+      on e: exception do
+        msgError := DmsgError;
+    end;
+
+    if iBuscaCep > 0 then
+      if not(Trim(ACBrCEP.Enderecos[0].IBGE_Municipio) = EmptyStr) then
+      Begin
+        ACBrIBGE.IgnorarCaixaEAcentos := True;
+        ACBrIBGE.BuscarPorNome(ACBrCEP.Enderecos[0].Municipio,
+          ACBrCEP.Enderecos[0].UF);
+        ACBrCEP.Enderecos[0].IBGE_Municipio := ACBrIBGE.Cidades[0]
+          .CodMunicipio.ToString;
+
+        GetCep('', ACBrCEP.Enderecos[0].Logradouro, ACBrCEP.Enderecos[0].Bairro,
+          ACBrIBGE.Cidades[0].CodMunicipio.ToString,
+          ACBrCEP.Enderecos[0].Municipio, ACBrCEP.Enderecos[0].UF);
+        exit;
+      end;
+{$ENDREGION}
+{$REGION 'wsRepublicaVirtual'}
+    ACBrCEP.WebService := wsRepublicaVirtual;
+
+    try
+      iBuscaCep := ACBrCEP.BuscarPorCEP(ACEP);
+      msgError := EmptyStr;
+    except
+      on e: exception do
+        msgError := DmsgError;
+    end;
+
+    if iBuscaCep > 0 then
+      if not(Trim(ACBrCEP.Enderecos[0].IBGE_Municipio) = EmptyStr) then
+      Begin
+        ACBrIBGE.IgnorarCaixaEAcentos := True;
+        ACBrIBGE.BuscarPorNome(ACBrCEP.Enderecos[0].Municipio,
+          ACBrCEP.Enderecos[0].UF);
+        ACBrCEP.Enderecos[0].IBGE_Municipio := ACBrIBGE.Cidades[0]
+          .CodMunicipio.ToString;
+
+        GetCep('', ACBrCEP.Enderecos[0].Logradouro, ACBrCEP.Enderecos[0].Bairro,
+          ACBrIBGE.Cidades[0].CodMunicipio.ToString,
+          ACBrCEP.Enderecos[0].Municipio, ACBrCEP.Enderecos[0].UF);
+        exit;
+      end;
+{$ENDREGION}
+    if msgError <> EmptyStr then
+      MsgBoxAlerta(msgError);
+  finally
+    FreeAndNil(ACBrCEP);
+    FreeAndNil(ACBrIBGE);
+  end;
+end;
+
+constructor TEndereco.Create;
+begin
+
+end;
+
+destructor TEndereco.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TEndereco.New: iEndereco;
+begin
+  Result := Self.Create;
+end;
+
+end.

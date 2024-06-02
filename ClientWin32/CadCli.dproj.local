@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/06/02 09:29:12.000.077,=C:\Users\evert\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit10.pas</Transaction>
+    <Transaction>2024/06/02 09:30:41.000.905,C:\Provas\Cadastro de Cliente\uCadCliente.dfm=C:\Users\evert\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit10.dfm</Transaction>
+    <Transaction>2024/06/02 09:30:41.000.905,C:\Provas\Cadastro de Cliente\uCadCliente.pas=C:\Users\evert\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit10.pas</Transaction>
+    <Transaction>2024/06/02 09:30:50.000.465,C:\Provas\Cadastro de Cliente\CadCli.dproj=C:\Users\evert\OneDrive\Documentos\Embarcadero\Studio\Projects\Project9.dproj</Transaction>
+    <Transaction>2024/06/02 09:32:42.000.644,=C:\Provas\Cadastro de Cliente\Unit1.pas</Transaction>
+    <Transaction>2024/06/02 09:33:00.000.363,C:\Provas\Cadastro de Cliente\ClientWin32\Modulos\uDM.pas=C:\Provas\Cadastro de Cliente\Unit1.pas</Transaction>
+    <Transaction>2024/06/02 09:33:00.000.363,C:\Provas\Cadastro de Cliente\ClientWin32\Modulos\uDM.dfm=C:\Provas\Cadastro de Cliente\Unit1.dfm</Transaction>
+    <Transaction>2024/06/02 11:15:43.310,=C:\Provas\Cadastro de Cliente\ClientWin32\Unit1.pas</Transaction>
+    <Transaction>2024/06/02 11:16:24.637,=C:\Provas\Cadastro de Cliente\ClientWin32\Unit2.pas</Transaction>
+    <Transaction>2024/06/02 11:17:57.235,C:\Provas\Cadastro de Cliente\ClientWin32\Interface\eEndereco.Model.Controller.pas=C:\Provas\Cadastro de Cliente\ClientWin32\Unit1.pas</Transaction>
+    <Transaction>2024/06/02 11:18:14.941,C:\Provas\Cadastro de Cliente\ClientWin32\Interface\eEndereco.View.Controller.pas=C:\Provas\Cadastro de Cliente\ClientWin32\Unit2.pas</Transaction>
+    <Transaction>2024/06/02 11:40:02.499,=C:\Provas\Cadastro de Cliente\ClientWin32\Modulos\uDM.pas</Transaction>
+    <Transaction>2024/06/02 11:46:58.346,=C:\Provas\Cadastro de Cliente\ClientWin32\Unit1.pas</Transaction>
+    <Transaction>2024/06/02 11:47:19.398,C:\Provas\Cadastro de Cliente\ClientWin32\Interface\eFuncoes.Model.Controller.pas=C:\Provas\Cadastro de Cliente\ClientWin32\Unit1.pas</Transaction>
+    <Transaction>2024/06/02 11:47:51.542,=C:\Provas\Cadastro de Cliente\ClientWin32\Unit1.pas</Transaction>
+    <Transaction>2024/06/02 11:48:07.625,C:\Provas\Cadastro de Cliente\ClientWin32\Interface\eFuncoes.View.Controller.pas=C:\Provas\Cadastro de Cliente\ClientWin32\Unit1.pas</Transaction>
+    <Transaction>2024/06/02 13:04:46.995,=C:\Provas\Cadastro de Cliente\ClientWin32\Unit1.pas</Transaction>
+    <Transaction>2024/06/02 13:07:05.361,C:\Provas\Cadastro de Cliente\ClientWin32\Interface\eCadCli.Model.Controller.pas=C:\Provas\Cadastro de Cliente\ClientWin32\Unit1.pas</Transaction>
+    <Transaction>2024/06/02 13:07:10.999,=C:\Provas\Cadastro de Cliente\ClientWin32\Unit1.pas</Transaction>
+    <Transaction>2024/06/02 13:09:00.575,C:\Provas\Cadastro de Cliente\ClientWin32\Interface\eCadCliProcessos.View.Controller.pas=C:\Provas\Cadastro de Cliente\ClientWin32\Unit1.pas</Transaction>
+    <Transaction>2024/06/02 13:09:16.389,C:\Provas\Cadastro de Cliente\ClientWin32\Interface\eCadCliProcessos.Model.Controller.pas=C:\Provas\Cadastro de Cliente\ClientWin32\Interface\eCadCli.Model.Controller.pas</Transaction>
+    <Transaction>2024/06/02 17:32:10.436,=C:\Provas\Cadastro de Cliente\ClientWin32\Unit1.pas</Transaction>
+    <Transaction>2024/06/02 17:32:22.635,C:\Provas\Cadastro de Cliente\ClientWin32\Bibliotecas\UCNPJWS.pas=C:\Provas\Cadastro de Cliente\ClientWin32\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -1,0 +1,16 @@
+unit eCadCli.Model.Controller;
+
+interface
+
+type
+  iCadCliProcessos = Interface
+    ['{EEB6AB01-9619-411C-A152-81A66BF7A259}']
+    function ValidarCPF(CPF: String): Boolean;
+    function ValidarCNPJ(CNPJ: String): Boolean;
+    function ValidarEmail(Email: String): Boolean;
+    function ValidarCep(CEP: String): Boolean;
+  End;
+
+implementation
+
+end.

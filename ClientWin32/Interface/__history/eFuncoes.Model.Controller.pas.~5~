@@ -1,0 +1,23 @@
+unit eFuncoes.Model.Controller;
+
+interface
+
+uses Forms,FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
+  FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
+  FireDAC.Comp.DataSet;
+
+type
+  iFuncoes = Interface
+    ['{E8EC2D0C-1E7F-4CC4-9A02-47D86F0B1031}']
+    procedure CentralizarFormularioNoMultiMonitor(Form: TForm);
+    function fFormata(Texto: string; Caracter: string; Posicao: string;
+      Tamanho: Integer; Upper: Boolean = true): string;
+    function Verifica(FD: TFDQuery): Boolean;
+  End;
+
+implementation
+
+end.

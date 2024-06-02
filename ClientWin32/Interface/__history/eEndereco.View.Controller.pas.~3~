@@ -1,0 +1,39 @@
+unit eEndereco.View.Controller;
+
+interface
+
+uses eEndereco.Model.Controller;
+
+Type
+  TEndereco = Class(TInterfacedObject, iEndereco)
+  private
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function New: iEndereco;
+  end;
+
+implementation
+
+{ TEndereco }
+
+constructor TEndereco.Create;
+begin
+
+end;
+
+destructor TEndereco.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TEndereco.New : iEndereco;
+begin
+  Result := Self.Create;
+end;
+
+end.
+
+
+

@@ -1,0 +1,17 @@
+unit eFuncoes.Model.Controller;
+
+interface
+
+uses Forms;
+
+type
+  iFuncoes = Interface
+    ['{E8EC2D0C-1E7F-4CC4-9A02-47D86F0B1031}']
+    procedure CentralizarFormularioNoMultiMonitor(Form: TForm);
+    function fFormata(Texto: string; Caracter: string; Posicao: string;
+      Tamanho: Integer; Upper: Boolean = true): string;
+  End;
+
+implementation
+
+end.

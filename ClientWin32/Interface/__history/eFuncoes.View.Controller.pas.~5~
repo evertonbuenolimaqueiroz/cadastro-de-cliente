@@ -1,0 +1,74 @@
+unit eFuncoes.View.Controller;
+
+interface
+
+uses eFuncoes.Model.Controller, Forms;
+
+Type
+  TFuncoes = Class(TInterfacedObject, iFuncoes)
+  private
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function New: iFuncoes;
+    procedure CentralizarFormularioNoMultiMonitor(Form: TForm);
+    function fFormata(Texto: string; Caracter: string; Posicao: string;
+      Tamanho: Integer; Upper: Boolean = true): string;
+  end;
+
+implementation
+
+{ TFuncoes }
+
+procedure TFuncoes.CentralizarFormularioNoMultiMonitor(Form: TForm);
+var
+  i: Integer;
+  TotalWidth, TotalHeight, MinLeft, MinTop: Integer;
+begin
+  TotalWidth := 0;
+  TotalHeight := 0;
+  MinLeft := Screen.Monitors[0].Left;
+  MinTop := Screen.Monitors[0].Top;
+
+  // Calcula a largura total e a altura total da área de todos os monitores
+  for i := 0 to Screen.MonitorCount - 1 do
+  begin
+    with Screen.Monitors[i] do
+    begin
+      if Left < MinLeft then
+        MinLeft := Left;
+      if Top < MinTop then
+        MinTop := Top;
+      if Left + Width > TotalWidth then
+        TotalWidth := Left + Width;
+      if Top + Height > TotalHeight then
+        TotalHeight := Top + Height;
+    end;
+  end;
+
+  // Ajusta as dimensões totais considerando os monitores mais à esquerda e acima
+  TotalWidth := TotalWidth - MinLeft;
+  TotalHeight := TotalHeight - MinTop;
+
+  // Centraliza o formulário
+  Form.Left := ((TotalWidth - Form.Width) div 2) + MinLeft;
+  Form.Top := ((TotalHeight - Form.Height) div 2) + MinTop;
+end;
+
+constructor TFuncoes.Create;
+begin
+
+end;
+
+destructor TFuncoes.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TFuncoes.New: iFuncoes;
+begin
+  Result := Self.Create;
+end;
+
+end.

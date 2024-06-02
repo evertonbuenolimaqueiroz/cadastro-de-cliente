@@ -1,0 +1,18 @@
+unit eCadCliProcessos.Model.Controller;
+
+interface
+
+uses Vcl.DBCtrls;
+
+type
+  iCadCliProcessos = Interface
+    ['{EEB6AB01-9619-411C-A152-81A66BF7A259}']
+    function ValidarCPF(CPF: String; edtdados: TDBEdit): Boolean;
+    function ValidarCNPJ(CNPJ: String; edtdados: TDBEdit): Boolean;
+    function ValidarEmail(Email: String; edtdados: TDBEdit): Boolean;
+    function ValidarCep(CEP: String; edtdados: TDBEdit): Boolean;
+  End;
+
+implementation
+
+end.

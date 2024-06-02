@@ -1,0 +1,94 @@
+object DM: TDM
+  OldCreateOrder = False
+  Height = 482
+  Width = 688
+  object con: TFDConnection
+    Params.Strings = (
+      'Database=C:\Provas\Cadastro de Cliente\Banco de Dados\CADCLI.FDB'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'DriverID=FB')
+    Connected = True
+    LoginPrompt = False
+    Left = 40
+    Top = 24
+  end
+  object qrycadcli: TFDQuery
+    BeforePost = qrycadcliBeforePost
+    Connection = con
+    SQL.Strings = (
+      'SELECT * FROM CadCli ')
+    Left = 40
+    Top = 80
+    object qrycadcliID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object qrycadcliFANTASIA: TStringField
+      DisplayLabel = 'Nome Fantasia'
+      FieldName = 'FANTASIA'
+      Origin = 'FANTASIA'
+      Required = True
+      Size = 150
+    end
+    object qrycadcliCPFCNPJ: TStringField
+      DisplayLabel = 'CPF/CNPJ'
+      FieldName = 'CPFCNPJ'
+      Origin = 'CPFCNPJ'
+      Required = True
+      Size = 100
+    end
+    object qrycadcliCEP: TStringField
+      FieldName = 'CEP'
+      Origin = 'CEP'
+      Required = True
+      Size = 100
+    end
+    object qrycadcliENDERECO: TStringField
+      DisplayLabel = 'Endereco'
+      FieldName = 'ENDERECO'
+      Origin = 'ENDERECO'
+      Size = 100
+    end
+    object qrycadcliNUMERO: TStringField
+      DisplayLabel = 'N'#250'mero'
+      FieldName = 'NUMERO'
+      Origin = 'NUMERO'
+      Size = 100
+    end
+    object qrycadcliCOMPLEMENTO: TStringField
+      DisplayLabel = 'Complemento'
+      FieldName = 'COMPLEMENTO'
+      Origin = 'COMPLEMENTO'
+      Size = 100
+    end
+    object qrycadcliBAIRRO: TStringField
+      DisplayLabel = 'Bairro'
+      FieldName = 'BAIRRO'
+      Origin = 'BAIRRO'
+      Size = 100
+    end
+    object qrycadcliCIDADE: TStringField
+      DisplayLabel = 'Cidade'
+      FieldName = 'CIDADE'
+      Origin = 'CIDADE'
+      Size = 100
+    end
+    object qrycadcliIBGE: TStringField
+      FieldName = 'IBGE'
+      Origin = 'IBGE'
+      Size = 100
+    end
+    object qrycadcliEMAIL: TStringField
+      FieldName = 'EMAIL'
+      Origin = 'EMAIL'
+      Size = 100
+    end
+    object qrycadcliTELEFONE: TStringField
+      FieldName = 'TELEFONE'
+      Origin = 'TELEFONE'
+      Size = 100
+    end
+  end
+end

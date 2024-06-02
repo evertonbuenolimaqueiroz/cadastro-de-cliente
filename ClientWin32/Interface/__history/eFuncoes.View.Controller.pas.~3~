@@ -1,0 +1,36 @@
+unit eFuncoes.View.Controller;
+
+interface
+
+uses eFuncoes.Model.Controller;
+
+Type
+  TFuncoes = Class(TInterfacedObject, iFuncoes)
+  private
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function New: iFuncoes;
+  end;
+
+implementation
+
+{ TFuncoes }
+
+constructor TFuncoes.Create;
+begin
+
+end;
+
+destructor TFuncoes.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TFuncoes.New : iFuncoes;
+begin
+  Result := Self.Create;
+end;
+
+end.

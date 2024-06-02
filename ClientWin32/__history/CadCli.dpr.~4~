@@ -1,0 +1,17 @@
+program CadCli;
+
+uses
+  Vcl.Forms,
+  uCadCliente in 'uCadCliente.pas' {fCadCli},
+  uDM in 'ClientWin32\Modulos\uDM.pas' {DM: TDataModule},
+  eEndereco.Model.Controller in 'Interface\eEndereco.Model.Controller.pas',
+  eEndereco.View.Controller in 'Interface\eEndereco.View.Controller.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfCadCli, fCadCli);
+  Application.Run;
+end.

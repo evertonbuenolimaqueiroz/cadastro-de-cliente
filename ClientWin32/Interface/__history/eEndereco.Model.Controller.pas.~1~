@@ -1,0 +1,14 @@
+unit eEndereco.Model.Controller;
+
+interface
+
+type
+  eEndereco = Interface
+    ['{011E641B-57FE-46B2-BC2C-23E7A3681F9F}']
+    procedure ConsolareBuscaCep(ACEP: String; out Logradouro: String;
+      out Bairro: String; out IBGE: String; out Cidade: String; out Estado: String);
+  End;
+
+implementation
+
+end.

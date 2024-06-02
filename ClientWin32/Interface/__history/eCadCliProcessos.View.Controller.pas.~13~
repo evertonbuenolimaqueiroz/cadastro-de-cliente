@@ -1,0 +1,111 @@
+unit eCadCliProcessos.View.Controller;
+
+interface
+
+uses eCadCliProcessos.Model.Controller, MsgBox, ACBrValidador, Vcl.DBCtrls,
+  SysUtils, cxDBEdit;
+
+Type
+  TCadCliProcessos = Class(TInterfacedObject, iCadCliProcessos)
+  private
+    ValidaDados: TACBrValidador;
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function New: iCadCliProcessos;
+    procedure ValidarNomeFantasia(Fantasia: String; edtdados: TDBEdit);
+    procedure ValidarCPF(CPF: String; edtdados: TDBEdit);
+    procedure ValidarCNPJ(CNPJ: String; edtdados: TDBEdit);
+    procedure ValidarEmail(Email: String; edtdados: TDBEdit);
+    procedure ValidarCep(CEP: String; edtdados: TcxDBButtonEdit);
+  end;
+
+implementation
+
+{ TCadCliProcessos }
+
+constructor TCadCliProcessos.Create;
+begin
+  ValidaDados := TACBrValidador.Create(nil);
+end;
+
+destructor TCadCliProcessos.Destroy;
+begin
+  FreeAndNil(ValidaDados);
+  inherited;
+end;
+
+class function TCadCliProcessos.New: iCadCliProcessos;
+begin
+  Result := Self.Create;
+end;
+
+procedure TCadCliProcessos.ValidarCep(CEP: String; edtdados: TcxDBButtonEdit);
+begin
+  ValidaDados.TipoDocto := docCEP;
+  ValidaDados.Documento := CEP;
+
+  if not ValidaDados.Validar then
+  begin
+    msgboxsimples('CEP inválido.', tmbAdvertencia);
+    edtdados.SetFocus;
+    abort;
+  end;
+end;
+
+procedure TCadCliProcessos.ValidarCNPJ(CNPJ: String; edtdados: TDBEdit);
+begin
+  if Length(edtdados.Text) = 14 then
+  begin
+    ValidaDados.TipoDocto := docCNPJ;
+    ValidaDados.Documento := CNPJ;
+
+    if not ValidaDados.Validar then
+    begin
+      msgboxsimples('CNPJ inválido.', tmbAdvertencia);
+      edtdados.SetFocus;
+      abort;
+    end;
+  end;
+end;
+
+procedure TCadCliProcessos.ValidarCPF(CPF: String; edtdados: TDBEdit);
+begin
+  if Length(edtdados.Text) = 11 then
+  begin
+    ValidaDados.TipoDocto := docCPF;
+    ValidaDados.Documento := CPF;
+
+    if not ValidaDados.Validar then
+    begin
+      msgboxsimples('CPF inválido.', tmbAdvertencia);
+      edtdados.SetFocus;
+      abort;
+    end;
+  end;
+end;
+
+procedure TCadCliProcessos.ValidarEmail(Email: String; edtdados: TDBEdit);
+begin
+  ValidaDados.TipoDocto := docEmail;
+  ValidaDados.Documento := Email;
+
+  if not ValidaDados.Validar then
+  begin
+    msgboxsimples('Email inválido.', tmbAdvertencia);
+    edtdados.SetFocus;
+    abort;
+  end;
+end;
+
+procedure TCadCliProcessos.ValidarNomeFantasia(Fantasia: String; edtdados: TDBEdit);
+begin
+  if Fantasia.IsEmpty then
+  begin
+    MsgBoxSimples('Nome Fantasia não informado.', tmbAdvertencia);
+    edtdados.setfous;
+    Abort;
+  end;
+end;
+
+end.

@@ -1,0 +1,15 @@
+object DM: TDM
+  OldCreateOrder = False
+  Height = 482
+  Width = 688
+  object con: TFDConnection
+    Params.Strings = (
+      'Database=C:\Provas\Cadastro de Cliente\Banco de Dados\CADCLI.FDB'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'DriverID=FB')
+    LoginPrompt = False
+    Left = 40
+    Top = 24
+  end
+end

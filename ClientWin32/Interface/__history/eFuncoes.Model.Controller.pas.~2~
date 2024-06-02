@@ -1,0 +1,12 @@
+unit eFuncoes.Model.Controller;
+
+interface
+
+type
+  iFuncoes = Interface
+    ['{E8EC2D0C-1E7F-4CC4-9A02-47D86F0B1031}']
+  End;
+
+implementation
+
+end.
